@@ -25,7 +25,6 @@ const Item = (props) => {
                 </div  >
                 <h4 className='text-center' >₹{resData.price} </h4>
                 <div className='flex items-center justify-center' >
-                    <button className='p-2 mx-2 bg-red-400' >REMOVE</button>
                     <button className='p-2 bg-green-400' onClick={() => addToCartHandler(resData)}>ADD</button>
                 </div>
             </div>

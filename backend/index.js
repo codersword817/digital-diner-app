@@ -12,8 +12,6 @@ app.get("/", (req, res) => {
 
 
 app.get("/items", async (req, res) => {
-    console.log("Outside");
-
     try {
         const items = await Menu.find({});
         res.status(200).json(items);

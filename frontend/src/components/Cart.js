@@ -94,7 +94,7 @@ const Cart = (props) => {
                         <div className="text-gray-700 text-sm mt-1">Quantity: {e.quantity}</div>
                         <button
                             className="bg-red-400 mt-2 px-3 py-1 rounded text-white hover:bg-red-500"
-                            onClick={() => deleteItemHandler(e.id)}
+                            onClick={() => deleteItemHandler(e._id)}
                         >
                             Remove
                         </button>
