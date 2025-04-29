@@ -11,7 +11,7 @@ const Signup = () => {
         setInput({ ...input, [name]: value })
     }
     const btnHandler = async () => {
-        await axios.post("http://localhost:4000/api/v1/register", input)
+        await axios.post("https://digital-diner-app-backend.onrender.com/api/v1/register", input)
             .then(res => {
                 if (res.data.message === "User is already Created") {
                     alert("User already Exists! Please LogIn Instead")

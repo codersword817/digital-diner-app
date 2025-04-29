@@ -20,7 +20,7 @@ const Cart = (props) => {
     };
 
     const postData = async (arr, total) => {
-        await axios.post(`http://localhost:4000/api/v2/order/${user}`, { user: user, items: arr, totalAmount: total }).then((res) => {
+        await axios.post(`https://digital-diner-app-backend.onrender.com/api/v2/order/${user}`, { user: user, items: arr, totalAmount: total }).then((res) => {
             console.log(res)
         }).catch((err) => console.log(err))
     }

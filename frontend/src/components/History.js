@@ -7,7 +7,7 @@ const History = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`http://localhost:4000/api/v2/history/${user}`);
+            const res = await axios.get(`https://digital-diner-app-backend.onrender.com/api/v2/history/${user}`);
             setData(res.data);
         } catch (err) {
             console.error(err);
