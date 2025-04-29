@@ -13,10 +13,11 @@ const Login = () => {
     const dispatch = useDispatch();
     const history = useNavigate();
     const btnHandler = async () => {
-        await axios.post(`https://digital-diner-app-backend.onrender.com/login`, input)
+        await axios.post(`http://localhost:4000/api/v1/login`, input)
             .then(res => {
                 // console.log(res.data.message);
                 if (res.data.message === "Incorrect Password / Email Please Check") {
+                    alert("Incorrect Username / Password please check")
                     setInput({ email: "", password: "" });
                 } else {
                     sessionStorage.setItem('user', res.data.message);

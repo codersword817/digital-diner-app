@@ -20,7 +20,7 @@ const Cart = (props) => {
     };
 
     const postData = async (arr, total) => {
-        await axios.post(`https://digital-diner-app-backend.onrender.com/order/${user}`, { user: user, items: arr, totalAmount: total }).then((res) => {
+        await axios.post(`http://localhost:4000/api/v2/order/${user}`, { user: user, items: arr, totalAmount: total }).then((res) => {
             console.log(res)
         }).catch((err) => console.log(err))
     }
@@ -40,11 +40,10 @@ const Cart = (props) => {
         // console.log(arr);
         postData(arr, total);
         // console.log(summaryArray);
-
+        dispatch(clearCart());
         setSummary(summaryArray);
         setTotalPrice(total);
         setIsOpen(true);
-        clearCart();
     };
 
     const closeOverlay = () => {
