@@ -7,7 +7,7 @@ const Home = () => {
     const [searchData, setSearchData] = useState("");
     const [filteredData, setFilteredData] = useState([]);
     const fetchData = async () => {
-        fetch('https://digital-diner-app-backend.onrender.com/items')
+        fetch('http://localhost:4000/items')
             .then(response => {
                 if (!response.ok) {
                     response.text().then(text => console.error('Error response:', text));

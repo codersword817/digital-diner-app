@@ -1,6 +1,7 @@
 const express = require("express");
 const Menu = require("./models/Menu");
 const User = require("./models/User");
+const Order = require("./models/Order");
 const cors = require('cors')
 const app = express();
 require("./connections/conn");
@@ -14,6 +15,7 @@ app.get("/", (req, res) => {
 });
 
 const bcrypt = require("bcryptjs");
+
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
 
@@ -67,6 +69,36 @@ app.get("/items", async (req, res) => {
         res.status(200).json(items);
     } catch (err) {
         res.status(400).json({ message: "Not connected" })
+    }
+
+});
+
+app.get("/users", async (req, res) => {
+    try {
+        const dt = await User.find({});
+        res.status(200).json(dt)
+    } catch (err) {
+        res.status(400).json({ message: `Error is ${err}` })
+    }
+})
+
+app.get("/history/:id", async (req, res) => {
+    const userid = req.params.id;
+    try {
+        const dt = await Order.find({ user: userid }).sort({ createdAt: -1 });
+        res.status(200).json(dt);
+    } catch (err) {
+        res.status(400).json({ message: `Error is ${err}` })
+    }
+})
+
+app.post("/order", async (req, res) => {
+    try {
+        const order = new Order({ ...req.body });
+        await order.save().then((resp) => res.status(200).json(resp))
+    } catch (err) {
+        console.error(err);
+        res.status(400).json({ message: err.message });
     }
 
 })
