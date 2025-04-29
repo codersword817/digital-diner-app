@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Login from './components/Login';
@@ -10,6 +9,7 @@ import Home from './components/Home';
 import { Provider, useSelector } from 'react-redux';
 
 import Cart from './components/Cart';
+
 
 
 function App() {
