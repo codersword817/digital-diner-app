@@ -17,19 +17,16 @@ const Navbar = () => {
         <ul className='flex flex-row items-center justify-between bg-blue-200 shadow-md h-12'>
             <li className="mx-4"><NavLink to="/" >Home</NavLink></li>
             <li className="mx-4"><NavLink to="/cart" > VIEW-CART </NavLink></li>
-            <li className="mx-4"><NavLink to="/about" >ABOUT</NavLink></li>
             {
                 !isLoggedIn &&
 
-                <li className="mx-4"> <NavLink to="/login" >LogIn</NavLink> </li>
-            }
-            {
-                !isLoggedIn &&
+                <li className="mx-4"> <NavLink to="/login" >LogIn</NavLink> </li> &&
 
                 <li className="mx-4" > <NavLink to="/signup" >SignUp</NavLink> </li>
             }
             {
                 isLoggedIn &&
+                <li className="mx-4"><NavLink to="/history" >History</NavLink></li> &&
 
                 <li className="mx-4" > <NavLink to="/logout" >Logout</NavLink> </li>
             }
