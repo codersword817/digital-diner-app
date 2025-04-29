@@ -7,12 +7,10 @@ const MenuSchema = new Schema({
         required: true,
     },
     price: {
-        type: String,
+        type: Number,
     },
     category: {
-        type: {
-            url: String
-        },
+        type: String,
     },
     imageUrl: {
         type: String,
