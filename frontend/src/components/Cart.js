@@ -1,11 +1,12 @@
 import { useDispatch } from "react-redux";
 import { clearCart, removeItem } from "../store/cartSlice";
 import { useState } from "react";
+import axios from "axios";
 
 const Cart = (props) => {
-    const { items } = props; // items is now an object
+    const { items } = props;
     const dispatch = useDispatch();
-
+    const user = sessionStorage.getItem('user');
     const [isOpen, setIsOpen] = useState(false);
     const [summary, setSummary] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
@@ -18,15 +19,32 @@ const Cart = (props) => {
         dispatch(removeItem(id));
     };
 
+    const postData = async (arr, total) => {
+        await axios.post(`https://digital-diner-app-backend.onrender.com/order/${user}`, { user: user, items: arr, totalAmount: total }).then((res) => {
+            console.log(res)
+        }).catch((err) => console.log(err))
+    }
+
     const placeOrder = () => {
         const summaryArray = Object.values(items);
         const total = summaryArray.reduce(
             (sum, item) => sum + item.price * item.quantity,
             0
         );
+        let arr = [];
+        for (let ele of summaryArray) {
+            // console.log(ele);
+
+            arr.push({ menuItem: ele?._id, itemName: ele?.name, quantity: ele?.quantity });
+        }
+        // console.log(arr);
+        postData(arr, total);
+        // console.log(summaryArray);
+
         setSummary(summaryArray);
         setTotalPrice(total);
         setIsOpen(true);
+        clearCart();
     };
 
     const closeOverlay = () => {

@@ -19,16 +19,17 @@ const Navbar = () => {
             <li className="mx-4"><NavLink to="/cart" > VIEW-CART </NavLink></li>
             {
                 !isLoggedIn &&
-
-                <li className="mx-4"> <NavLink to="/login" >LogIn</NavLink> </li> &&
-
-                <li className="mx-4" > <NavLink to="/signup" >SignUp</NavLink> </li>
+                <>
+                    <li className="mx-4"> <NavLink to="/login" >LogIn</NavLink> </li>
+                    <li className="mx-4" > <NavLink to="/signup" >SignUp</NavLink> </li>
+                </>
             }
             {
                 isLoggedIn &&
-                <li className="mx-4"><NavLink to="/history" >History</NavLink></li> &&
-
-                <li className="mx-4" > <NavLink to="/logout" >Logout</NavLink> </li>
+                <>
+                    <li className="mx-4"><NavLink to="/history" >History</NavLink></li>
+                    <li className="mx-4" > <NavLink to="/logout" >Logout</NavLink> </li>
+                </>
             }
         </ul>
     )

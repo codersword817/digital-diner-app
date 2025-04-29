@@ -13,6 +13,9 @@ const orderSchema = new Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Menu"
             },
+            itemName: {
+                type: String
+            },
             quantity: {
                 type: Number,
                 default: 1

@@ -92,9 +92,9 @@ app.get("/history/:id", async (req, res) => {
     }
 })
 
-app.post("/order", async (req, res) => {
+app.post("/order/:id", async (req, res) => {
     try {
-        const order = new Order({ ...req.body });
+        const order = new Order({ ...req.body, user: req.params.id });
         await order.save().then((resp) => res.status(200).json(resp))
     } catch (err) {
         console.error(err);
@@ -105,4 +105,4 @@ app.post("/order", async (req, res) => {
 
 
 
-app.listen(PORT, () => console.log("Server Listening to Port 4000"));
+app.listen(PORT, () => console.log(`Server Listening to Port ${PORT}`));
