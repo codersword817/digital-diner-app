@@ -1,7 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { addItem } from '../store/cartSlice';
+
+
 
 const Item = (props) => {
     const { resData } = props;
+    const dispatch = useDispatch();
+    const addToCartHandler = (data) => {
+        dispatch(addItem(data));
+    };
     return (
         <div>
             <div className="container h-[23rem] w-[16rem] flex flex-col m-4 p-4 border-2 border-solid shadow-md bg-blue-50 hover:bg-blue-300 ">
@@ -18,7 +26,7 @@ const Item = (props) => {
                 <h4 className='text-center' >₹{resData.price} </h4>
                 <div className='flex items-center justify-center' >
                     <button className='p-2 mx-2 bg-red-400' >REMOVE</button>
-                    <button className='p-2 bg-green-400' >ADD</button>
+                    <button className='p-2 bg-green-400' onClick={() => addToCartHandler(resData)}>ADD</button>
                 </div>
             </div>
         </div>
