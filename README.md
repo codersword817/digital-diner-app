@@ -1,34 +1,70 @@
-Setup for Backend Local and run
+# 🍽️ Digital Diner
 
-1. Replace all the render Links in the frontend
-   https://digital-diner-app-backend.onrender.com with http://localhost:4000 or any open port of your choice
-2. Run the commands
-   cd frontend
-   - npm i
-   - npm run start => start frontend
-     cd ..
-     cd backend
-   - npm i
-   - nodemon index.js => start the backend
+A full-stack food ordering web application designed to streamline the user experience of browsing menus, placing orders, and viewing order history.
 
-with these steps you can run it locally
+## 🚀 Live Demo
+
+Frontend: https://digital-diner-app-frontend.onrender.com/
 
 ---
 
-Database Choice MongoDB vs Postgres
+## 🛠️ Local Development Setup
 
-since the User Model consists of static schema requirements it is more likely to use postgres
-Order Model consists of all the users who have ordered so its better to make it flexible schema so better choice is mongodb
-Menu order depends on the volume of the data but most suitable is postgres
+Follow these steps to run the project locally:
 
-I chose to take up a single database due to time constraint and data size
+### 1. Update Frontend API URLs
 
-=--------------------
+Replace all instances of:
 
-API Endpoints Created
+https://digital-diner-app-backend.onrender.com
 
-POST /api/v1/register
-POST /api/v1/login
-GET /api/v2/items
-GET /api/v2/history/:id
-POST /api/v2/order/:id
+with:
+
+http://localhost:4000
+
+in the frontend source code (or choose another open port if needed).
+
+### 2. Install & Start Frontend
+
+### 3. Install & Start Backend
+
+## 🧠 Database Choice: PostgreSQL vs MongoDB
+
+**User Model**  
+PostgreSQL is preferred due to the static schema and relational nature.
+
+**Order Model**  
+MongoDB is a better fit here due to its flexible schema requirements for storing order history from multiple users.
+
+**Menu Items**  
+PostgreSQL is suitable due to the relatively static and structured data.
+
+> ⚠️ For simplicity and due to time constraints, a single database (MongoDB) was used for the entire project.
+
+---
+
+## 📡 API Endpoints
+
+### 🔐 Authentication
+
+- POST /api/v1/register – Register a new user
+- POST /api/v1/login – Authenticate user and return token
+
+### 🍔 Menu & Orders
+
+- GET /api/v2/items – Retrieve all available menu items
+- GET /api/v2/history/:id – Get order history for a specific user
+- POST /api/v2/order/:id – Place a new order for the specified user
+
+---
+
+## 📂 Tech Stack
+
+- Frontend: React.js, TailwindCSS
+- Backend: Node.js, Express
+- Database: MongoDB
+- Deployment: Render
+
+---
+
+Feel free to fork, clone, and contribute!
