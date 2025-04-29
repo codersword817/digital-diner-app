@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const Menu = require("./Menu");
+
 
 const userSchema = new mongoose.Schema({
     username: {

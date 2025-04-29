@@ -6,7 +6,7 @@ import Logout from './components/Logout';
 import Signup from './components/Signup';
 import Home from './components/Home';
 
-import { Provider, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Cart from './components/Cart';
 
