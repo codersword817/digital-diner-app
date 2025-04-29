@@ -74,7 +74,7 @@ const Home = () => {
                 </button>
             </div>
             <div>
-                <div className="outerContainer flex flex-wrap justify-around bg-blue-100">
+                <div className=" flex flex-wrap justify-around bg-blue-100">
                     {filteredData.map((e, idx) => (
                         <NavLink key={idx} >
                             <Item resData={e}></Item>

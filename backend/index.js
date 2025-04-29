@@ -16,8 +16,6 @@ app.get("/items", async (req, res) => {
 
     try {
         const items = await Menu.find({});
-        console.log(items);
-
         res.status(200).json(items);
     } catch (err) {
         res.status(400).json({ message: "Not connected" })

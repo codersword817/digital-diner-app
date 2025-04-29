@@ -3,7 +3,7 @@ import { clearCart, removeItem } from "../store/cartSlice";
 import { useState } from "react";
 
 const Cart = (props) => {
-    const { items } = props;
+    const { items } = props; // items is now an object
     const dispatch = useDispatch();
 
     const [isOpen, setIsOpen] = useState(false);
@@ -19,32 +19,11 @@ const Cart = (props) => {
     };
 
     const placeOrder = () => {
-        const freqMap = new Map();
-        let total = 0;
-
-        for (let item of items) {
-
-
-            const key = item._id;
-            if (freqMap.has(key)) {
-                const existing = freqMap.get(key);
-                existing.quantity += 1;
-            } else {
-                freqMap.set(key, {
-                    id: item.id,
-                    name: item.name,
-                    price: Number(item.price),
-                    quantity: 1,
-                });
-            }
-        }
-
-        const summaryArray = Array.from(freqMap.values());
-        summaryArray.forEach((item) => {
-            total += item.price * item.quantity;
-        });
-        console.log(total);
-
+        const summaryArray = Object.values(items);
+        const total = summaryArray.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+        );
         setSummary(summaryArray);
         setTotalPrice(total);
         setIsOpen(true);
@@ -99,19 +78,20 @@ const Cart = (props) => {
                 </button>
             </div>
 
-            {items.length === 0 && (
+            {Object.keys(items).length === 0 && (
                 <h1 className="text-center text-xl mt-4">Cart is Empty. Add to Cart</h1>
             )}
 
-            {items.map((e) => (
+            {Object.values(items).map((e) => (
                 <div
                     className="bg-gray-50 flex justify-center w-2/4 m-auto my-4 shadow rounded"
-                    key={e?.id}
+                    key={e?._id}
                 >
                     <div className="text-sm p-4 w-8/12">
                         <div className="font-medium text-lg">{e?.name}</div>
                         <div className="font-semibold text-gray-800">{e?.price} ₹</div>
                         <div className="font-thin text-gray-600">{e?.category}</div>
+                        <div className="text-gray-700 text-sm mt-1">Quantity: {e.quantity}</div>
                         <button
                             className="bg-red-400 mt-2 px-3 py-1 rounded text-white hover:bg-red-500"
                             onClick={() => deleteItemHandler(e.id)}
