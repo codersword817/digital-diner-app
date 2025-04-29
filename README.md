@@ -26,7 +26,17 @@ in the frontend source code (or choose another open port if needed).
 
 ### 2. Install & Start Frontend
 
+cd frontend
+npm install
+npm run start
+
 ### 3. Install & Start Backend
+
+cd ..
+cd backend
+npm install
+node .\init\init.js - setup the local Menu data
+nodemon index.js
 
 ## 🧠 Database Choice: PostgreSQL vs MongoDB
 
